@@ -1,0 +1,100 @@
+.item {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius:25px;
+
+}
+
+.img-info {
+    border-radius: 25px;
+    background-color: #e1e6eb;
+    /* height: 28em; */
+}
+
+.img-info img {
+    border-radius: 25px;
+    width: 100%;
+    height: 80%;
+}
+
+.img-info div {
+    width: 100%;
+    height: 5em;
+}
+
+.item h1 {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+
+.item {
+    background-color: #3F00FF;
+}
+
+.item-properties {
+    text-align: center;
+    width: 100%;
+
+}
+
+.item-properties span {
+    font-size: 0.8em;
+    font-weight: 100;
+    color:#aab9c3;
+    font-family: montserratarm-regular;
+}
+
+.item-properties p {
+    font-family: montserratarm-regular;
+    color : #fff;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.item-submit-button {
+    height: 2em;
+    width:85%;
+}
+
+.item-submit-button button{
+    background-color: #fff;
+    color : #002369;
+    font-family: montserratarm-regular;
+    font-size: 1em;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.item-submit-button button:hover {
+    color : #fff;
+    background-color: #ff6900;
+}
+
+
+@media (max-width : 768px) {
+    .item-info {
+        height: 4em;
+    }
+}
+
+@media (max-width : 900px) {
+    .item-properties p {
+        font-size: 0.9em;
+        padding: 2px;
+    }
+}
+
+.item-info {
+    width: 100%;
+    height: 5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    justify-content: center;
+}

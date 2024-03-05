@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 60%;
+}
+
+.pagination button {
+    border : 1px solid #e1e6eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8em;
+    background-color: transparent;
+    color: #67696b;
+    color : #002369;
+    height: 3em;
+    width: 10em;
+}
+
+.pagination button img {
+    width: 0.45em;
+    padding: 0;
+    margin: 0;
+}
