@@ -11,8 +11,8 @@ const UserAccount = () => {
 
     return (
         <div className="nav-link nav-user" onMouseEnter={handleUserMouse} onMouseLeave={handleUserMouse}> 
-            hello,<br/>
-            {user ? user.username : ''}
+            Ողջույն,<br/>
+            <span>{user ? user.username : ''}</span>
             {isDropdownVisible && (
                 <div className="dropdown">
                     <ul>

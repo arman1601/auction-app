@@ -1,11 +1,12 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 const getUserAuction = async (user) => {
     const token = user.token;
     const userId = user.id;
     try {
         const res = await axios.post(
-            `http://localhost:5000/api/partipicates-auctions/`,
+            `${API_URL}/api/partipicates-auctions/`,
             {userId},
             {
                 headers : {
@@ -18,8 +19,17 @@ const getUserAuction = async (user) => {
             return res.data.data
         }
     }catch (error) {
+        if(error.response.data.error === 'Your session has expired.') {
+            return {
+                expired : true,
+            };
+        }
+
         console.log(error)
-    }
-}
+
+        return error.response.data.error;
+        }
+
+    };
 
 export default getUserAuction;

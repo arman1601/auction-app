@@ -1,6 +1,6 @@
 import database from "../database.js";
 
-const setNewPrice = async (req,res) => {
+export const setNewPrice = async (req,res) => {
     try {
         const {userId,currentItemValue,suggValue} = req.body;
         const auctionId = req.params.auctionId;
@@ -29,5 +29,3 @@ const setNewPrice = async (req,res) => {
         res.status(404).json('Ooops : Internal server error');
     };
 };
-
-export default setNewPrice;

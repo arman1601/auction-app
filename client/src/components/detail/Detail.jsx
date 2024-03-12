@@ -8,13 +8,14 @@ import AddToCart from './addToCart/AddToCart';
 import Footer from '../footer/Footer';
 import CalculateDate from './addToCart/CalculateTime';
 import { countries } from './slider/Data';
+import { API_URL } from '../../config';
 import Carousel from './slider/Carousel';
 import Modal from './modal/Modal';
-
 
 const Detail = () => {
     const { id } = useParams();
     const { user } = useAuth();
+
     const [elem,setElem] = useState(null);
     const [error,setError] = useState(null);
     const [loading,setLoading] = useState(true);
@@ -24,7 +25,7 @@ const Detail = () => {
         const postItem = async () => {
             try {
                 const token = user.token;
-                const response = await axios.get(`http://localhost:5000/api/auctions/item/${id}`,
+                const response = await axios.get(`${API_URL}/api/auctions/item/${id}`,
                     { headers : { Authorization : token ? `Bearer ${token}` : '' } }
                 )
                 const data = response.data.data;

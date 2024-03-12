@@ -1,43 +1,45 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useCallback,useMemo} from 'react';
 import PropTypes from 'prop-types';
 
-const CalculateDate  = ({auction_start,auction_end}) =>{ 
+const CalculateDate  = ({auction_end}) =>{ 
     const [timeRemaining,setTimeRemaining] = useState(null);
     
-    useEffect(() => {
-        const calculateTimeRemaining  = () => {
-            const end = new Date(auction_end);
-            const dateNow = new Date();
-            const difference = Math.floor(end-dateNow) ; 
+    const calculateTimeRemaining  = useCallback(() => {
+        const end = new Date(auction_end);
+        const dateNow = new Date();
+        const difference = Math.floor(end-dateNow) ; 
 
-            let timeLeft = {};
-  
-            if (difference >  0) {
-              timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-              };
-            } else {
-              timeLeft = {
-                minutes : "Closed",
-              };
-            }
-            setTimeRemaining(timeLeft);
-        };
+        let timeLeft = {};
 
-        calculateTimeRemaining();
+        if (difference >  0) {
+          timeLeft = {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+            minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          };
+        } else {
+          timeLeft = {
+            minutes : "Closed",
+          };
+        }
+        setTimeRemaining(timeLeft);
         
-        const timerId = setInterval(calculateTimeRemaining, 60000);
-        return () => clearInterval(timerId);
+    },[auction_end]);
 
-    },[auction_end,auction_start]);
+    useEffect(() => {
+      calculateTimeRemaining();
+
+      const timerId = setInterval(calculateTimeRemaining, 60000);
+      return () => clearInterval(timerId);
+    },[calculateTimeRemaining]);
     
-    if(!timeRemaining) {
-        return null;
+    const memoizedTimeRemaining = useMemo(() => timeRemaining, [timeRemaining]);
+
+    if (!memoizedTimeRemaining) {
+      return null;
     }
 
-    const {days,hours,minutes} = timeRemaining;
+    const {days,hours,minutes} = memoizedTimeRemaining;
 
     return (
         <div className='date-cont'>
@@ -49,7 +51,7 @@ const CalculateDate  = ({auction_start,auction_end}) =>{
                   Մինչև աճուրդի ավարտը
                 </h3>
                 <p className='countdown'>
-                  {days} օր <span>:</span>&nbsp;{hours} ժամ &nbsp;<span>:</span>&nbsp;{minutes} րոպե
+                  <span >{days} օր <span>:</span>&nbsp;{hours} ժամ &nbsp;<span>:</span>&nbsp;{minutes} րոպե</span>
                 </p>
             </div>
             )}
@@ -59,8 +61,7 @@ const CalculateDate  = ({auction_start,auction_end}) =>{
 }
 
 CalculateDate.propTypes = {
-  auction_start : PropTypes.string.isRequired,
-  auction_end : PropTypes.string.isRequired,
+  auction_end : PropTypes.string,
 
 }
 

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { API_URL } from "../config";
 
 const putAuctionPrice = async (elem,suggestedValue,user) => {
     try {
@@ -21,7 +22,7 @@ const putAuctionPrice = async (elem,suggestedValue,user) => {
         }else if (/^\d+$/.test(suggValue) !== true ) {
             throw new Error('Suggested value will be only number')
         }else {
-            const response = await axios.put(`http://localhost:5000/auctions/updatePrice/${auctionId}`, 
+            const response = await axios.put(`${API_URL}/auctions/updatePrice/${auctionId}`, 
             requestData,
             {
                 headers : {

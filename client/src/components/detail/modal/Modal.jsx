@@ -1,5 +1,6 @@
 import './modal.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Modal = ({isActive,setActive}) => {
         return (
@@ -9,9 +10,11 @@ const Modal = ({isActive,setActive}) => {
               <h3>Ձեր առաջարկը ընդունված է</h3>
       
               <div className="buttons">
-                <button className="close-btn" onClick={() => setActive(!isActive)} >
-                    Փակել
-                </button>
+                <Link to={'/my-auctions'}>
+                  <button className="close-btn" onClick={() => setActive(!isActive)} >
+                    Գնալ դեպի իմ աճուրդներ
+                  </button>
+                </Link>
               </div>
             </div>
           </section>

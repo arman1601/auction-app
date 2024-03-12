@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/main' element={<ProtectedRoute> <Body/> </ProtectedRoute>} />
-        <Route index element={<Navigate to={'/main'} />} />
+        <Route index element={ <Navigate to={'/main'} /> } />
         <Route path='/auctions/item/:id' element={<ProtectedRoute> <Detail /> </ProtectedRoute>} />
         <Route path='/my-auctions' element={<ProtectedRoute> <MyAuctions /> </ProtectedRoute>} />
       </Routes>

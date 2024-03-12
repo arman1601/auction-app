@@ -5,10 +5,10 @@ export const countries = [
   },
   {
     image: "/img/conv_background.jpg",
-    title: "conv",
+    title: "conv2",
   },
   {
     image: "/img/conv_background.jpg",
-    title: "conv",
+    title: "conv3",
   },
 ];

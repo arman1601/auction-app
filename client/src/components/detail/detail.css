@@ -102,6 +102,7 @@
 
 .date-cont div {
     display: flex;
+    gap : 0.4em;
 }
 
 .date-cont h3 {

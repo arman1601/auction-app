@@ -7,6 +7,12 @@
     border : none;
 }
 
+.nav-link.nav-user span {
+    font-family: Montserrat-Medium;
+    font-size: 1em;
+    color: #002369;
+}
+
 .dropdown {
     position: absolute;
     top: 100%;

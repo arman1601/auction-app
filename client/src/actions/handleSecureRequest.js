@@ -1,28 +1,31 @@
 import axios from 'axios';
+import { API_URL } from '../config';
 // es grel em nra hamar vor amen angam serverin zapros uxarkeluc function chgrem
 // ayl parametr uxarkem u es function y ogtagorcem
 
 const handleSecureRequest = async (page,perPage,token) => {
     try {
+
+        if(!page || !perPage || !token) {
+            throw new Error('You are missing arguments')
+        }
+
         const response = await axios.get(
-            
-            `http://localhost:5000/api/products?page=${page}&perPage=${perPage}`,
-            {},
+            `${API_URL}/api/products?page=${page}&perPage=${perPage}`,
             {
                 headers: {
                     Authorization: token ? `Bearer ${token}` : '',
                 },
             }
         );
-        
+            
         if(response) {
             const data = response.data
             return data;
         }
         
-    } catch (error) {
-       console.log('Error in secure request: ', error);
-       return false;
+    }catch (error) {
+        throw new Error(error.message);
     }
 };
 

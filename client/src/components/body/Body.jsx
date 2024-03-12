@@ -5,15 +5,18 @@ import NavBar from '../navBar/NavBar';
 import Item from './item/Item';
 import Pagination from '../pagination/Pagination';
 import Footer from '../footer/Footer';
+import ScrollToTop from './ScrollToTop';
 import handleSecureRequest from '../../actions/handleSecureRequest';
 
 const Body = () => {
     const {user} = useAuth();
+
     const [data,setData] = useState([]);
     const [error,setError] = useState(null);
     const [loading,setLoading] = useState(true);
     const [page,setPage] = useState(1);
     const [totalPages,setTotalPages] = useState(null);
+
 
     useEffect(() => {
         const getItems = async () => {
@@ -24,34 +27,34 @@ const Body = () => {
                 if(response) {
                     setData(response.rows);
                     setTotalPages(Math.ceil(response.countItems.count / perPage))
-                }else {
-                    throw new Error('errr in getItems')
                 }
             }catch (error) {
-                setError(`Internal server error: Try later`)
+                setError(`Ooops : Internal server error.Try later`);
+                setLoading(false)
             }finally {
                 setLoading(false);
             }
         };
+
         getItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[page]);
-
+    },[page,user]);
 
     if (error) return <div className="errorMsg" role="alert">{error}</div>;
-    if (loading) return <p>Загрузка...</p>;
+    if (loading) return <p>Loading...</p>
 
     return (
         <div className='bodyPage'>
             <NavBar/>
             <main className='mainCont'>
+
                 <div className='promo-img'> </div>
 
                 <h1>Ընթացիկ աճուրդներ</h1>
+                {data.length === 0 && (
+                    <div>In this time we didnt have active auctions.Please check later</div>
+                )}
                 <div className="itemsCont">
-                    {data.length === 0 && (
-                        <div>Items not found</div>
-                    )}
                     {data.length > 0 && data.map(elem => (
                         <Item key={elem.id} elem={elem} />
                     ))}
@@ -59,6 +62,7 @@ const Body = () => {
 
                 <Pagination page={page} setPage={setPage} totalPages={totalPages} />
             </main>
+            <ScrollToTop />
             <Footer />
         </div>
     )

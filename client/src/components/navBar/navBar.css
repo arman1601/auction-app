@@ -11,7 +11,7 @@
     border-radius: 20px;
     background-color: white;
     box-sizing: border-box;
-    font-family: Montserrat-Medium;
+    font-family: montserratarm-regular;
     font-weight: 600;
 
 }
@@ -20,6 +20,10 @@
     display: flex;
     gap: 2.5em;
     margin-left: auto; 
+}
+
+.nav-items p {
+    font-family: Montserrat-Medium;
 }
 
 .nav-link {

@@ -3,13 +3,15 @@ const Input = (props) => {
     
     const handleOnChange = (e) => {
         e.preventDefault();
-        const value = e.target.value.replace(/[<>]/g, '');
+        const value = e.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
         props.setValue(value);
-    
-        if (value !== e.target.value) {
-          props.setError('Չթույլատրված սիմվոլների մուտք');
-        }
 
+        if (value !== e.target.value) {
+            props.setError('Չթույլատրված սիմվոլների մուտք');
+        }
+        if (value === '') {
+            props.setError('')
+        }
     }
 
     return (

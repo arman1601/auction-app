@@ -6,6 +6,7 @@ import Input from './Input';
 
 const Login = () => {
     const {login,user} = useAuth();
+
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [error,setError] = useState('');
@@ -20,21 +21,19 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await login(username,password);
-            // if(user) navigate('/main')
-        }catch (error) {
-            setError('incorect username or password');
+        if(!username || !password) {
+            return setError('partadiren lracman')
         }
-    }
+        const response = await login(username,password);
+        setError(response)        
+    };
 
     return (
         <div className='loginPage'>
             <div className='authCont'>
-
                 <div className='promo'>
                     <h1>Need webdesign<br/>for your business?<br/><span>Design Spacee</span><br/>will help you</h1>
-                        <img src='../../img/login-logo.png' alt='ConverseBank'/>
+                    <img src='../../img/login-logo.png' alt='ConverseBank'/>
                 </div>
                 
                 <div className='auth'>
@@ -61,7 +60,7 @@ const Login = () => {
                     </form>
                 </div>
 
-            </div>         
+            </div>  
         </div> 
     )
 };
