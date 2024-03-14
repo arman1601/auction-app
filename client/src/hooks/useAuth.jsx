@@ -21,8 +21,7 @@ export const AuthProvider = ({children}) => {
                 body: JSON.stringify({ username, password })
             });
             const data = await response.json()
-            console.log(data,'d')
-            console.log(response,'r')
+
             if (response.ok) {
                 setUser(data.user);
             }else if (response.status === 401) {

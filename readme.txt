@@ -9,5 +9,8 @@ pass : 11111111
 log:arman2013
 pass : 12345678
 
-3.Minchev 8rd achurdy(MERCEDES E350) avartvac en,dranic en koxm der yntacqi mej en.
+3.In the root folder there is a file database.sql which contains all the database information.
+I also created a docker container with my project, if necessary I can upload it to the
+docker hub and give access.
+
 
