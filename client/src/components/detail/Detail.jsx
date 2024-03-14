@@ -7,8 +7,8 @@ import NavBar from '../navBar/NavBar';
 import AddToCart from './addToCart/AddToCart';
 import Footer from '../footer/Footer';
 import CalculateDate from './addToCart/CalculateTime';
-import { countries } from './slider/Data';
-import { API_URL } from '../../config';
+import { countries } from './slider/data.js';
+import API_URL from '../../API_URL.js';
 import Carousel from './slider/Carousel';
 import Modal from './modal/Modal';
 

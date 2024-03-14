@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '../config';
+import API_URL from '../API_URL.js';
 // es grel em nra hamar vor amen angam serverin zapros uxarkeluc function chgrem
 // ayl parametr uxarkem u es function y ogtagorcem
 

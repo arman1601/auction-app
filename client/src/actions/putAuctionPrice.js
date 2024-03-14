@@ -1,5 +1,5 @@
 import axios from "axios"
-import { API_URL } from "../config";
+import API_URL from '../API_URL.js';
 
 const putAuctionPrice = async (elem,suggestedValue,user) => {
     try {

@@ -21,11 +21,10 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!username || !password) {
-            return setError('partadiren lracman')
+        const result = await login(username, password);
+        if (result !== undefined && result.message) {
+            setError(result.message)
         }
-        const response = await login(username,password);
-        setError(response)        
     };
 
     return (
@@ -47,13 +46,21 @@ const Login = () => {
                         )}
 
                         <Input
-                            type={'text'} setValue={setUsername} value={username}
-                            id={'username'} placeholder={'Username'} setError={setError}
+                            type="text"
+                            id="username"
+                            placeholder="Username"
+                            value={username}
+                            setValue={setUsername}
+                            setError={setError}
                         />
                         <hr/>
                         <Input
-                            type={'password'} setValue={setPassword} value={password}
-                            placeholder={'Password'} id={'password'}
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            value={password}
+                            setValue={setPassword}
+                            setError={setError}
                         />
                         <hr/>
                         <button type="submit">Login</button>

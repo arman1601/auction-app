@@ -21,6 +21,11 @@ db.connect((err) => {
   }
 });
 
+
+app.get('/', (req, res)=>{
+    res.send("Server is ruing")
+})
+
 app.post('/login', userController);
 
 app.get('/api/products',authenticateJWT, getAuctions)
@@ -31,5 +36,5 @@ app.put('/auctions/updatePrice/:auctionId',authenticateJWT,setNewPrice);
 
 app.post('/api/partipicates-auctions/',authenticateJWT,getPartipicatesAuctions)
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
 

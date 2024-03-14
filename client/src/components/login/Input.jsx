@@ -1,35 +1,38 @@
 import PropTypes from 'prop-types';
-const Input = (props) => {
+const Input = ({ type, id, placeholder, value, setValue, setError }) => {
     
     const handleOnChange = (e) => {
         e.preventDefault();
-        const value = e.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
-        props.setValue(value);
+        const inputValue = e.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+        setValue(inputValue);
 
-        if (value !== e.target.value) {
-            props.setError('Չթույլատրված սիմվոլների մուտք');
-        }
-        if (value === '') {
-            props.setError('')
+        if (inputValue !== e.target.value) {
+            setError('Չթույլատրված սիմվոլների մուտք');
+        } else {
+            setError(null);
         }
     }
 
     return (
         <input
-        type={props.type} id={props.id} name={props.id}
-        placeholder={props.placeholder} value={props.value} required
-        onChange={handleOnChange}/>
-    )
+            type={type}
+            id={id}
+            name={id}
+            placeholder={placeholder}
+            value={value}
+            required
+            onChange={handleOnChange}
+        />
+    );
 }
 
 Input.propTypes = {
-    username : PropTypes.string,
-    id : PropTypes.string,
-    placeholder : PropTypes.string,
+    id: PropTypes.string,
+    placeholder: PropTypes.string,
     type: PropTypes.string,
-    setValue : PropTypes.func,
-    value : PropTypes.string,
-    setError : PropTypes.func,
+    value: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired,
+    setError: PropTypes.func.isRequired,
 };
 
-export default  Input;
+export default Input;

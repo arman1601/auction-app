@@ -1,6 +1,6 @@
 import { createContext,useContext,useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { API_URL } from '../config.js';
+import API_URL from '../API_URL.js';
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
@@ -20,19 +20,25 @@ export const AuthProvider = ({children}) => {
                 },
                 body: JSON.stringify({ username, password })
             });
-
+            const data = await response.json()
+            console.log(data,'d')
+            console.log(response,'r')
             if (response.ok) {
-                const data = await response.json();
                 setUser(data.user);
             }else if (response.status === 401) {
-                return 'Սխալ մուտքանուն կամ գախտտնաբառ';
+                return data
             }else if (response.status === 400) {
-                return 'Սխալ : մուտքանուն կամ գաղտնաբառ չկա'
+                return data;
             }else {
-                throw new Error('Ներքին ցանցի սխալ, խնդրում ենք կրկին փորձել')
+                return {
+                    message: 'Int server error'
+                }
             }
+            
         } catch (error) {
-            return error;
+            return {
+                message: 'Int server error.Please try again'
+            }
         }
     };
 
