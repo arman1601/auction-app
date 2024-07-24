@@ -1,24 +1,13 @@
-import axios from 'axios';
-import API_URL from '../API_URL.js';
-// es grel em nra hamar vor amen angam serverin zapros uxarkeluc function chgrem
-// ayl parametr uxarkem u es function y ogtagorcem
+import { axiosInstance } from '../config.js';
 
-const handleSecureRequest = async (page,perPage,token) => {
+export const handleSecureRequest = async (page,perPage) => {
     try {
-
-        if(!page || !perPage || !token) {
+        if(!page || !perPage ) {
             throw new Error('You are missing arguments')
         }
-
-        const response = await axios.get(
-            `${API_URL}/api/products?page=${page}&perPage=${perPage}`,
-            {
-                headers: {
-                    Authorization: token ? `Bearer ${token}` : '',
-                },
-            }
+        const response = await axiosInstance.get(
+            `/api/auctions/products?page=${page}&perPage=${perPage}`,
         );
-            
         if(response) {
             const data = response.data
             return data;
@@ -29,6 +18,3 @@ const handleSecureRequest = async (page,perPage,token) => {
     }
 };
 
-
-
-export default handleSecureRequest;

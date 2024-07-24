@@ -1,0 +1,9 @@
+.logoCont {
+    display: flex;
+    align-items: center;
+    font-family: montserrat-medium;
+    color: #002369;
+}
+.logoCont img {
+    width: 3em;
+}

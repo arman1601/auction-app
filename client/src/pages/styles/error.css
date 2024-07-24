@@ -1,0 +1,35 @@
+.err-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.25rem;
+    background-color: #f7fafc;
+    color: #1a202c;
+    height: 30em;
+}
+
+.err-header {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.err-message {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+
+.err-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #3182ce;
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.err-button:hover {
+    background-color: #2b6cb0;
+}
+  
+  

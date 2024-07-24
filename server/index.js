@@ -1,16 +1,16 @@
 import express from 'express';
 import database from './database.js';
-import authenticateJWT from './middleware/authenticateJWT.js';
 import cors from 'cors';
-import { userController } from './controllers/userController.js';
-import { setNewPrice } from './services/userService.js';
-import { getAuctions,getAuctionsById,getPartipicatesAuctions } from './services/auctionService.js';
+import userRoutes from './routes/userRoutes.js';
+import auctionRoutes from './routes/auctionRoutes.js'
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
-app.use(cors({credentials: true , origin : process.env.CLIENT_URL}))
-app.use(express.static('./client/src'))
-app.use(express.json())
+app.use(cors({credentials: true , origin : process.env.CLIENT_URL}));
+app.use(express.static('./client/src'));
+app.use(express.json());
+app.use(cookieParser());
 
 const db = database;
 db.connect((err) => {
@@ -21,20 +21,8 @@ db.connect((err) => {
   }
 });
 
-
-app.get('/', (req, res)=>{
-    res.send("Server is ruing")
-})
-
-app.post('/login', userController);
-
-app.get('/api/products',authenticateJWT, getAuctions)
-
-app.get('/api/auctions/item/:id',authenticateJWT, getAuctionsById)
-
-app.put('/auctions/updatePrice/:auctionId',authenticateJWT,setNewPrice);
-
-app.post('/api/partipicates-auctions/',authenticateJWT,getPartipicatesAuctions)
+app.use('/api/users', userRoutes);
+app.use('/api/auctions', auctionRoutes);
 
 app.listen(process.env.PORT || 5000);
 

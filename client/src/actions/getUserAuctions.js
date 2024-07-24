@@ -1,19 +1,10 @@
-import axios from "axios";
-import API_URL from '../API_URL.js';
+import { axiosInstance } from "../config";
 
-const getUserAuction = async (user) => {
-    const token = user.token;
+export const getUserAuction = async (user) => {
     const userId = user.id;
     try {
-        const res = await axios.post(
-            `${API_URL}/api/partipicates-auctions/`,
-            {userId},
-            {
-                headers : {
-                    Authorization: token ? `Bearer ${token}` : '',
-                },
-            }
-        );
+        const res = await axiosInstance.post(`/api/auctions/participates-auctions`,{ userId });
+        console.log(res,'getUserAuction')
 
         if(res.status === 200) {
             return res.data.data
@@ -31,5 +22,3 @@ const getUserAuction = async (user) => {
         }
 
     };
-
-export default getUserAuction;

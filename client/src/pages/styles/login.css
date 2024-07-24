@@ -1,0 +1,208 @@
+.loginPage {
+    background-color: #3F00FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat-Light';
+}
+
+.authCont {
+    background-color: #fff;
+    margin: 30px;
+    width: 80vw;
+    height: 100%;
+    min-height: 80vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: rgba(255,255,255,0.4)
+    /* gap:30%; */
+}
+
+.authCont form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+.auth {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-top-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10%;
+    padding-top: 10%;
+}
+
+.auth h1 {
+    margin-left:0;
+    padding-bottom: 7%;
+    font-size: 1.6em;
+    color : #141414;
+}
+.auth input {
+    width: 58%;
+    border: none;
+    outline: none;
+    height: 3em;
+}
+
+.auth button {
+    width: 58%;
+    max-height: 2.5em;
+    background-color: #3F00FF;
+    border:none;
+    border-radius: 4px;
+    height:3em;
+    margin-top: 1em;
+    cursor: pointer;
+    color : #141414;
+    font-size: 1.3em;
+}
+
+.auth hr {
+    width: 58%;
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid black;
+    opacity: 0.3;
+}
+
+.promo {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10%;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    background-color: rgba(63, 0, 255, 0.2);
+}
+
+.promo h1 {
+    color:#e1e6eb;
+    font-size: 2em;
+    font-family: 'Montserrat-Light';
+}
+
+.promo h1 span {
+    color :#3F00FF;
+}
+
+.promo> img {
+    width: 11em;
+}
+
+.errorMsg > h3 {
+    color:red;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.create-account {
+    color:#141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    font-size: 1em;
+    font-family: montserratarm-regular;
+}
+
+.create-account > button {
+    max-width: 13em;
+    font-size: 1em;
+    font-family: montserratarm-regular;
+    margin: 0;
+    cursor: pointer;
+    border:none;
+    background: none;
+    color :#3F00FF;
+}
+
+@media (max-width: 776px) {
+    .loginPage {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .authCont {
+        grid-template-columns: 1fr;
+        background-color: rgba(255,255,255,0);
+
+    }
+
+    .auth {
+        border-radius: 10px;
+    }
+
+    .promo {
+        display: none;
+    }
+}
+/* 
+input[type="email"],
+
+input[type="password"] {
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+
+    width: 250px;
+
+}
+
+
+input[type="submit"] {
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+
+input[type="submit"]:hover {
+
+    background-color: #0062cc;
+
+} */
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../../../public/fonts/Montserrat-Bold.ttf');
+}

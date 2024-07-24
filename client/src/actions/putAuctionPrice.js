@@ -1,9 +1,8 @@
-import axios from "axios"
-import API_URL from '../API_URL.js';
+import { axiosInstance } from "../config";
 
 const putAuctionPrice = async (elem,suggestedValue,user) => {
     try {
-        const token = user.token;
+        console.log(user,'useri id')
         const userId = user.id;
         const auctionId = elem.id;
         const min_step = elem.min_step;
@@ -22,13 +21,7 @@ const putAuctionPrice = async (elem,suggestedValue,user) => {
         }else if (/^\d+$/.test(suggValue) !== true ) {
             throw new Error('Suggested value will be only number')
         }else {
-            const response = await axios.put(`${API_URL}/auctions/updatePrice/${auctionId}`, 
-            requestData,
-            {
-                headers : {
-                    Authorization : token ? `Bearer ${token}` : '',
-                },
-            });
+            const response = await axiosInstance.put(`/api/auctions/updatePrice/${auctionId}`, { requestData });
             return response;
         }
 
