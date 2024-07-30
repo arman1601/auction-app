@@ -1,16 +1,29 @@
-1.Open two terminals, one for the front-end (client) and another for back-end(server).
-2. In client terminal : npm run dev
-3. In server terminal : npm run serverDev
+Hello, I created a docker image for your convenience, below will be details on how to open the application.
+But if you want without docker, then below will be the instructions.
 
-2.users data for test
-log : petros2024
-pass : 11111111
+1. Install Docker and Docker Compose: https://www.docker.com/
+2. Create a folder and put the docker-compose.yml there.
+3. Open the terminal in the folder where you dropped the dockerfile and write in the command line
+docker-compose up --build
+4. After the container is created, you can access the application by going to http://localhost:8080
 
-log:arman2013
-pass : 12345678
 
-3.In the root folder there is a file database.sql which contains all the database information.
-I also created a docker container with my project, if necessary I can upload it to the
-docker hub and give access.
+1.Open cmd and clone the repository from GitHub git clone https://github.com/yourusername/your-repository.git
+2.Go to the client folder and write 'npm install' .Do the same for the folder server
+3.Make sure MySQL is installed and running on your computer. Open a terminal and write
+3.1 mysql -u root -p
+3.2 CREATE DATABASE audit_db;
+    USE audit_db;
+    SOURCE /path/to/your/database-file.sql;
+4.Go to the server folder and run the command npm run serverDev
+5.Go to the client folder and run the command npm run dev
+6. Open the site via the link http://localhost:8080 and enjoy :)
+
+
+
+
+
+
+
 
 

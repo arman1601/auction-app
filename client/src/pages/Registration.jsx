@@ -30,14 +30,13 @@ export const Registration = () => {
             return setError('Please enter a valid email adresssssss')
         }else {
             const result = await register(user);
-            if(result?.response?.data?.message) {
-                setError(result?.response?.data?.message ||  'Something went wrong');
-            }else {
+            if(result.status === 201) {
                 setActive(true);
+            }else {
+                setError(result.message|| result.error)
             }
         }
     };
-
 
     return (
         <div className='loginPage'>

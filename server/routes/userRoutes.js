@@ -6,6 +6,10 @@ import { logoutController } from '../controllers/logoutController.js';
 
 const router = express.Router();
 
+router.get('/test-connection', (req,res) => {
+    res.status(200).send({message: 'Connection is working!'});
+})
+
 router.post('/create-account', newUserCreateController);
 router.post('/login', loginController);
 router.post('/updateToken', updateToken);
